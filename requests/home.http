@@ -1,0 +1,81 @@
+### auth0 system token
+POST https://dev-xs1u5mnzrm83ke4o.us.auth0.com/oauth/token
+Content-Type: application/json
+
+{
+    "grant_type":"client_credentials",
+    "client_id":"0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E",
+    "client_secret":"3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf",
+    "audience":"https://books/api"
+}
+
+> {%
+ client.global.set("accessToken", response.body.accessToken)
+ %}
+
+
+### admin user token
+POST https://dev-xs1u5mnzrm83ke4o.us.auth0.com/oauth/token
+Content-Type: application/json
+
+{
+  "grant_type":"password",
+  "username":"thomas-hiemstra@hotmail.com",
+  "password": "Admin@123",
+  "audience":"https://books/api",
+  "client_id":"0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E",
+  "client_secret":"3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf"
+}
+
+> {%
+ client.global.set("accessToken", response.body.access_token)
+ %}
+
+
+### general user token
+POST https://dev-xs1u5mnzrm83ke4o.us.auth0.com/oauth/token
+Content-Type: application/json
+
+{
+  "grant_type":"password",
+  "username":"thomashiemstra16@gmail.com",
+  "password": "User@123",
+  "audience":"https://books/api",
+  "client_id":"0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E",
+  "client_secret":"3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf"
+}
+
+> {%
+ client.global.set("accessToken", response.body.access_token)
+ %}
+
+
+### login via api
+POST {{host}}/auth0/login
+Content-Type: application/json
+
+{
+  "username":"thomashiemstra16@gmail.com",
+  "password": "User@123"
+}
+
+> {%
+ client.global.set("accessToken", response.body.jwtToken)
+ %}
+
+### simple get
+GET {{host}}/
+Authorization: Bearer {{accessToken}}
+
+
+### simple admin get
+GET {{host}}/admin
+Authorization: Bearer {{accessToken}}
+
+
+### swagger????
+GET {{host}}/swagger-ui.html
+
+
+### ?????
+GET {{host}}/auth0/v3/api-docs

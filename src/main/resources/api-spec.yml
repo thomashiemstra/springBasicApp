@@ -1,0 +1,49 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0-0
+  title: books api
+  description: api for books
+
+servers:
+  - url: /auth0
+
+security:
+  - BearerAuth: []
+
+paths:
+  /login:
+    post:
+      description: "login an auth0 user"
+      operationId: "Authenticate"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth0LoginRequest'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Auth0LoginResponse'
+        '405':
+          description: Invalid input
+
+components:
+  schemas:
+
+    Auth0LoginRequest:
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+
+    Auth0LoginResponse:
+      properties:
+        jwtToken:
+          type: string

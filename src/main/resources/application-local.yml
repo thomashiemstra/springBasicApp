@@ -1,0 +1,33 @@
+server:
+    port: 8080
+
+logging:
+    level:
+      root: DEBUG
+
+spring:
+    security:
+        oauth2:
+            client:
+                registration:
+                    auth0:
+                        client-id: 0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E
+                        client-secret: 3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf
+                        scope:
+                        - openid
+                        - profile
+                        - email
+                provider:
+                    auth0:
+                        issuer-uri: https://dev-xs1u5mnzrm83ke4o.us.auth0.com/
+
+auth0:
+    domain: dev-xs1u5mnzrm83ke4o.us.auth0.com
+    client_id: 0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E
+    client_secret: 3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf
+    audience: https://books/api
+    issuer:  https://dev-xs1u5mnzrm83ke4o.us.auth0.com/
+
+
+springdoc:
+    version: '@springdoc.version@'

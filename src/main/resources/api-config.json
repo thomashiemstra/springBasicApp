@@ -1,0 +1,11 @@
+{
+  "apiPackage": "org.generated.books.api",
+  "modelPackage": "org.generated.books.model",
+  "dateLibrary": "java8",
+  "useBeanValidation": true,
+  "interfaceOnly": true,
+  "hideGenerationTimestamp": true,
+  "serviceInterface": true,
+  "openApiNullable": false,
+  "useSpringBoot3": "true"
+}
