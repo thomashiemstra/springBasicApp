@@ -68,14 +68,17 @@ GET {{host}}/
 Authorization: Bearer {{accessToken}}
 
 
+### simple get
+POST {{host}}/whatever
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "username":"thomashiemstra16@gmail.com",
+  "password": "User@123"
+}
+
 ### simple admin get
 GET {{host}}/admin
 Authorization: Bearer {{accessToken}}
 
-
-### swagger????
-GET {{host}}/swagger-ui.html
-
-
-### ?????
-GET {{host}}/auth0/v3/api-docs

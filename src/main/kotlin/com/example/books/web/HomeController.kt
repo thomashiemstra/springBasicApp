@@ -21,7 +21,7 @@ class HomeController {
     }
 
     @PostMapping("/whatever")
-    fun whatever(input: WebAuth0LoginRequest): String {
+    fun whatever(@AuthenticationPrincipal jwt: Jwt, input: WebAuth0LoginRequest): String {
         return "whoop"
     }
 }

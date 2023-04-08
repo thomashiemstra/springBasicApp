@@ -23,7 +23,7 @@ class SecurityConfig(val auth0Properties: Auth0Properties) {
                 .csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/auth0/login", "/v3/api-docs/**","/swagger-ui/**", "/error").permitAll()
-//                .requestMatchers("/admin").hasAnyAuthority("read:all")
+                .requestMatchers("/admin/*").hasAnyAuthority("read:all")
                 .anyRequest()
                 .authenticated()
                 .and()
