@@ -1,50 +1,14 @@
-server:
-    port: 8080
-
-#logging:
-#    level:
-#      root: DEBUG
-
 spring:
-    datasource:
-        username: postgres
-        password: postgres
-        driver-class-name: org.postgresql.Driver
-        url: jdbc:postgresql://localhost:5432/books
-    security:
-        oauth2:
-            client:
-                registration:
-                    auth0:
-                        client-id: 0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E
-                        client-secret: 3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf
-                        scope:
-                        - openid
-                        - profile
-                        - email
-                provider:
-                    auth0:
-                        issuer-uri: https://dev-xs1u5mnzrm83ke4o.us.auth0.com/
-    flyway:
-        placeholders:
-          application-user: books
-        url: jdbc:postgresql://localhost:5432/books
-        user: admin
-        password: admin
-        out-of-order: true
-    jpa:
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-#        hibernate:
-#            ddl-auto: update
-#        show-sql: true
-
-auth0:
-    domain: dev-xs1u5mnzrm83ke4o.us.auth0.com
-    client_id: 0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E
-    client_secret: 3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf
-    audience: https://books/api
-    issuer:  https://dev-xs1u5mnzrm83ke4o.us.auth0.com/
-
-
-springdoc:
-    version: '@springdoc.version@'
+  datasource:
+    url: jdbc:h2:file:/data/h2db
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings.trace: false
+      settings.web-allow-others: false
