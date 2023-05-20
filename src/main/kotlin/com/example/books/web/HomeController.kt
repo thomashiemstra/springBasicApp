@@ -32,12 +32,6 @@ class HomeController(val bookRepository: BookRepository) {
         return "whoop"
     }
 
-    @GetMapping("/book/{bookId}")
-    fun getBook(@AuthenticationPrincipal jwt: Jwt, @PathVariable bookId: String): ResponseEntity<Book>? {
-        val book = getBookById(bookId.toLong())
-        return ResponseEntity.of(book)
-    }
-
     @Transactional
     private fun getBookById(id: Long): Optional<Book> {
         return bookRepository.findById(id)

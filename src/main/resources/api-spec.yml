@@ -32,6 +32,28 @@ paths:
         '405':
           description: Invalid input
 
+  /book/{bookId}:
+    get:
+      description: "get a book by id"
+      operationId: "get Book"
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          schema:
+            type: integer
+      tags:
+        - Books
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookResponse'
+        '405':
+          description: Invalid input
+
 components:
   schemas:
 
@@ -48,4 +70,44 @@ components:
     Auth0LoginResponse:
       properties:
         jwtToken:
+          type: string
+
+    BookResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          $ref: '#/components/schemas/AuthorResponse'
+        averageRating:
+          type: string
+        isbn:
+          type: string
+        isbn13:
+          type: string
+        language_code:
+          type: string
+        num_pages:
+          type: string
+        ratings_count:
+          type: string
+        text_reviews_count:
+          type: string
+        publication_date:
+          type: string
+          format: date
+        publisher:
+          $ref: '#/components/schemas/PublisherResponse'
+
+
+    AuthorResponse:
+      type: object
+      properties:
+        authorName:
+          type: string
+
+    PublisherResponse:
+      type: object
+      properties:
+        publisherName:
           type: string

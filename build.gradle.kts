@@ -10,6 +10,7 @@ plugins {
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
     kotlin("plugin.jpa") version "1.7.22"
+    kotlin("kapt") version "1.3.72"
 }
 
 group = "com.example"
@@ -47,6 +48,9 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies-maven")
 
     implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
+
+    implementation("org.mapstruct:mapstruct:1.5.5.Final")
+    kapt("org.mapstruct:mapstruct-processor:1.5.5.Final")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     runtimeOnly("com.h2database:h2")
