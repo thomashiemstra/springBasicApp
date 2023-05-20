@@ -46,6 +46,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies")
     implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies-maven")
 
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.5")
+
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("org.postgresql:postgresql")
