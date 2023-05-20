@@ -5,6 +5,13 @@ server:
 #    level:
 #      root: DEBUG
 
+auth0:
+    domain: dev-xs1u5mnzrm83ke4o.us.auth0.com
+    client_id: 0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E
+    client_secret: 3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf
+    audience: https://books/api
+    issuer:  https://dev-xs1u5mnzrm83ke4o.us.auth0.com/
+
 spring:
     datasource:
         username: postgres
@@ -16,15 +23,15 @@ spring:
             client:
                 registration:
                     auth0:
-                        client-id: 0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E
-                        client-secret: 3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf
+                        client-id: ${auth0.client_id}
+                        client-secret: ${auth0.client_secret}
                         scope:
                         - openid
                         - profile
                         - email
                 provider:
                     auth0:
-                        issuer-uri: https://dev-xs1u5mnzrm83ke4o.us.auth0.com/
+                        issuer-uri: ${auth0.issuer}
     flyway:
         placeholders:
           application-user: books
@@ -37,13 +44,6 @@ spring:
 #        hibernate:
 #            ddl-auto: update
 #        show-sql: true
-
-auth0:
-    domain: dev-xs1u5mnzrm83ke4o.us.auth0.com
-    client_id: 0CM2y9a5ym9uE20hQvNp2ALr5lpRLr0E
-    client_secret: 3ohzRndl_YUjv9jqucHGBiyXu_ek3dH52CAur4aRHhXK8UL0cx5y8WXH96IjBnlf
-    audience: https://books/api
-    issuer:  https://dev-xs1u5mnzrm83ke4o.us.auth0.com/
 
 
 springdoc:
