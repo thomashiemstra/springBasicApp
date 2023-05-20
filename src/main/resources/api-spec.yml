@@ -8,7 +8,7 @@ servers:
   - url: /auth0
 
 security:
-  - BearerAuth: []
+  - bearerAuth: []
 
 paths:
   /login:
@@ -37,11 +37,7 @@ paths:
       description: "get a book by id"
       operationId: "get Book"
       parameters:
-        - in: path
-          name: bookId
-          required: true
-          schema:
-            type: integer
+        - $ref: '#/components/parameters/bookIdParam'
       tags:
         - Books
       responses:
@@ -55,8 +51,15 @@ paths:
           description: Invalid input
 
 components:
-  schemas:
+  parameters:
+    bookIdParam:
+      in: path
+      name: bookId
+      required: true
+      schema:
+        type: string
 
+  schemas:
     Auth0LoginRequest:
       required:
         - username
