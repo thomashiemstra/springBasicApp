@@ -39,11 +39,19 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("javax.validation:validation-api:2.0.1.Final")
 
+    implementation("com.github.doyaaaaaken:kotlin-csv-jvm:1.9.0")
+
+    implementation("org.jetbrains.kotlin:kotlin-scripting-common")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-jvm")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies")
+    implementation("org.jetbrains.kotlin:kotlin-scripting-dependencies-maven")
+
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     runtimeOnly("com.h2database:h2")
     runtimeOnly("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation(kotlin("script-runtime"))
 }
 
 tasks.withType<KotlinCompile> {

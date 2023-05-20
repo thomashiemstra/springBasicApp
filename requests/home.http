@@ -64,9 +64,13 @@ Content-Type: application/json
  %}
 
 ### simple get
-GET {{host}}/
+GET {{host}}/home
 Authorization: Bearer {{accessToken}}
 
+
+### book get
+GET {{host}}/book/1
+Authorization: Bearer {{accessToken}}
 
 ### simple get
 POST {{host}}/whatever
