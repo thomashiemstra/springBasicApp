@@ -1,7 +1,9 @@
 package com.example.books.security
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Profile
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -28,13 +30,14 @@ class SecurityConfig(val auth0Properties: Auth0Properties) {
                 .authenticated()
                 .and()
                 .oauth2ResourceServer().jwt()
-                .decoder(jwtDecoder())
+//                .decoder(jwtDecoder())
                 .jwtAuthenticationConverter(jwtAuthenticationConverter())
                 .and()
                 .and().build()
 
     }
-
+    @Bean
+    @Profile("!test")
     fun jwtDecoder(): JwtDecoder {
         return (JwtDecoders.fromOidcIssuerLocation(auth0Properties.issuer) as NimbusJwtDecoder).apply {
             setJwtValidator(

@@ -1,0 +1,1 @@
+CREATE USER books WITH PASSWORD 'books';

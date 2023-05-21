@@ -40,6 +40,8 @@ paths:
         - $ref: '#/components/parameters/bookIdParam'
       tags:
         - Books
+      security:
+        - bearerAuth: [ ]
       responses:
         '200':
           description: successful operation
@@ -57,7 +59,7 @@ components:
       name: bookId
       required: true
       schema:
-        type: string
+        type: integer
 
   schemas:
     Auth0LoginRequest:
