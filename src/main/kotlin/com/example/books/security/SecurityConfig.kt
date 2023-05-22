@@ -22,18 +22,20 @@ class SecurityConfig(val auth0Properties: Auth0Properties) {
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         return http
-                .csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/auth0/login", "/v3/api-docs/**","/swagger-ui/**", "/error").permitAll()
-                .requestMatchers("/admin/*").hasAnyAuthority("read:all")
-                .anyRequest()
-                .authenticated()
-                .and()
-                .oauth2ResourceServer().jwt()
-//                .decoder(jwtDecoder())
-                .jwtAuthenticationConverter(jwtAuthenticationConverter())
-                .and()
-                .and().build()
+            .csrf { csrf -> csrf.disable() }
+            .authorizeHttpRequests{ authorizeHttpRequests ->
+                authorizeHttpRequests
+                    .requestMatchers("/auth0/login", "/v3/api-docs/**","/swagger-ui/**", "/error").permitAll()
+                    .requestMatchers("/admin/*").hasAnyAuthority("read:all")
+                    .anyRequest()
+                    .authenticated()
+            }
+            .oauth2ResourceServer{ oauth2ResourceServer ->
+                oauth2ResourceServer.jwt {
+                        jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
+                }
+            }
+            .build()
 
     }
     @Bean
