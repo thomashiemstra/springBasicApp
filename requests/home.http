@@ -89,3 +89,27 @@ Content-Type: application/json
 GET {{host}}/admin
 Authorization: Bearer {{accessToken}}
 
+### add Book
+POST {{host}}/saveBook
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "title": "Some book",
+  "author": {
+    "id": 1,
+    "authorName": "J.K. Rowling"
+  },
+  "averageRating": "4.57",
+  "isbn": "0439785960",
+  "isbn13": "9780439785969",
+  "language_code": "eng",
+  "num_pages": "1",
+  "ratings_count": "1",
+  "text_reviews_count": "1",
+  "publication_date": "2006-09-16",
+  "publisher": {
+    "id": 1,
+    "publisherName": "Scholastic Inc."
+  }
+}

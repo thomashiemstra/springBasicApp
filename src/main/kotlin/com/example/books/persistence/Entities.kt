@@ -9,9 +9,9 @@ import java.time.LocalDate
 @Table(name = "books")
 data class Book(
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "book_id")
-    var id: Int,
+    var id: Int?,
     var title: String,
     @ManyToOne
     @JoinColumn(name="author_id")
@@ -33,24 +33,39 @@ data class Book(
 @Table(name = "authors")
 data class Author(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id")
-    var id: Int,
+    var id: Int?,
     var authorName: String,
     @JsonIgnore
     @OneToMany(targetEntity = Book::class, mappedBy = "author")
-    var books: List<Book>
+    var books: List<Book>?
 )
 
 @Entity(name = "publisher")
 @Table(name = "publishers")
 data class Publisher(
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "publisher_id")
-    var id: Int,
+    var id: Int?,
     var publisherName: String,
     @JsonIgnore
     @OneToMany(targetEntity = Book::class, mappedBy = "publisher")
-    var books: List<Book>
+    var books: List<Book>?
+)
+
+@Entity(name = "user")
+@Table(name = "users")
+data class User(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    var id: Int?,
+    var userName: String
+//    @OneToMany
+//    @JoinTable(name = "favourite_books_join_table",
+//        joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "user_id")],
+//        inverseJoinColumns = [JoinColumn(name = "book_id", referencedColumnName = "book_id")])
+//    var favouriteBooks: List<Book>
 )

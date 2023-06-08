@@ -48,7 +48,32 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BookResponse'
+                $ref: '#/components/schemas/Book'
+        '405':
+          description: Invalid input
+#  /addFavouriteBook/{bookId}:
+#    post:
+#      description: "add a favourite book for the logged in user"
+#      operationId: "add favourite book"
+#      parameters:
+#        -
+  /saveBook:
+    post:
+      description: "save a new book"
+      operationId: "save book"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      tags:
+        - Books
+      security:
+        - bearerAuth: [ ]
+      responses:
+        '200':
+          description: successful operation
         '405':
           description: Invalid input
 
@@ -77,13 +102,15 @@ components:
         jwtToken:
           type: string
 
-    BookResponse:
+    Book:
       type: object
       properties:
+        id:
+          type: integer
         title:
           type: string
         author:
-          $ref: '#/components/schemas/AuthorResponse'
+          $ref: '#/components/schemas/Author'
         averageRating:
           type: string
         isbn:
@@ -102,17 +129,21 @@ components:
           type: string
           format: date
         publisher:
-          $ref: '#/components/schemas/PublisherResponse'
+          $ref: '#/components/schemas/Publisher'
 
 
-    AuthorResponse:
+    Author:
       type: object
       properties:
+        id:
+          type: integer
         authorName:
           type: string
 
-    PublisherResponse:
+    Publisher:
       type: object
       properties:
+        id:
+          type: integer
         publisherName:
           type: string

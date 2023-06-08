@@ -1,4 +1,4 @@
-package com.example.books.service
+package com.example.books.persistence.service
 
 import com.example.books.security.Auth0Properties
 import org.generated.books.model.WebAuth0LoginRequest

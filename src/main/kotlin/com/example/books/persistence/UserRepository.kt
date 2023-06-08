@@ -4,7 +4,5 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface AuthorRepository: CrudRepository<Author, Int> {
-
-    fun getReferenceById(id: Int)
+interface UserRepository: CrudRepository<User, Int> {
 }
