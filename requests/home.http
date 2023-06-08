@@ -50,6 +50,9 @@ Content-Type: application/json
  %}
 
 
+### get USer
+GET https://dev-xs1u5mnzrm83ke4o.us.auth0.com/api/v2/642de1ff3595d0580ee31663
+
 ### login via api
 POST {{host}}/auth0/login
 Content-Type: application/json
