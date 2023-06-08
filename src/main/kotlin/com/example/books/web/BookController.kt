@@ -6,6 +6,8 @@ import mu.KotlinLogging
 import org.generated.books.api.BooksApi
 import org.generated.books.model.WebBookResponse
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.security.oauth2.jwt.Jwt
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -13,6 +15,8 @@ class BookController(
     val bookService: BookService,
     val domainToWebMapper: DomainToWebMapper
 ): BooksApi {
+
+    private fun getPrincipal() = SecurityContextHolder.getContext().authentication.principal as Jwt
 
     private val logger = KotlinLogging.logger {}
 
