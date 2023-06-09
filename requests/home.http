@@ -97,8 +97,7 @@ Content-Type: application/json
 {
   "title": "Some book",
   "author": {
-    "id": 1,
-    "authorName": "J.K. Rowling"
+    "id": 1
   },
   "averageRating": "4.57",
   "isbn": "0439785960",
@@ -109,8 +108,7 @@ Content-Type: application/json
   "text_reviews_count": "1",
   "publication_date": "2006-09-16",
   "publisher": {
-    "id": 1,
-    "publisherName": "Scholastic Inc."
+    "id": 1
   }
 }
 

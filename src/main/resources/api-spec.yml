@@ -295,6 +295,8 @@ components:
 
     Author:
       type: object
+      required:
+        - id
       properties:
         id:
           type: integer
@@ -303,6 +305,8 @@ components:
 
     Publisher:
       type: object
+      required:
+        - id
       properties:
         id:
           type: integer

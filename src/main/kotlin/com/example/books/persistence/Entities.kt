@@ -36,7 +36,7 @@ data class Author(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "author_id")
     var id: Int?,
-    var authorName: String,
+    var authorName: String?,
     @JsonIgnore
     @OneToMany(targetEntity = Book::class, mappedBy = "author")
     var books: List<Book>?
@@ -49,7 +49,7 @@ data class Publisher(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "publisher_id")
     var id: Int?,
-    var publisherName: String,
+    var publisherName: String?,
     @JsonIgnore
     @OneToMany(targetEntity = Book::class, mappedBy = "publisher")
     var books: List<Book>?
