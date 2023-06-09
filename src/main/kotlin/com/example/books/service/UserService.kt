@@ -71,7 +71,7 @@ class UserService(val userRepository: UserRepository,
     fun getAllBookLists(): List<WebBookListResponse> {
         val user = getCurrentLoggedInUser()
         val bookLists = user.bookLists
-        return  mapper.toWebBookLists(bookLists)
+        return mapper.toWebBookLists(bookLists)
     }
 
     private fun getCurrentLoggedInUser(): User {

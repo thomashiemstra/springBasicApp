@@ -64,6 +64,7 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test:6.1.0")
     testImplementation("io.zonky.test:embedded-database-spring-test:2.3.0")
     testImplementation("io.zonky.test:embedded-postgres:2.0.4")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
     implementation(kotlin("script-runtime"))
 }
 
