@@ -62,10 +62,10 @@ data class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     var id: Int?,
-    var userName: String
-//    @OneToMany
-//    @JoinTable(name = "favourite_books_join_table",
-//        joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "user_id")],
-//        inverseJoinColumns = [JoinColumn(name = "book_id", referencedColumnName = "book_id")])
-//    var favouriteBooks: List<Book>
+    var userName: String,
+    @OneToMany
+    @JoinTable(name = "favourite_books_join_table",
+        joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "user_id")],
+        inverseJoinColumns = [JoinColumn(name = "book_id", referencedColumnName = "book_id")])
+    var favouriteBooks: MutableList<Book>
 )

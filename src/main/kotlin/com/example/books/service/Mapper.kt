@@ -1,4 +1,4 @@
-package com.example.books.persistence.service
+package com.example.books.service
 
 import com.example.books.persistence.Author
 import com.example.books.persistence.Book
@@ -20,4 +20,5 @@ interface Mapper  {
     fun toWebAuthor(author: Author): WebAuthor
 
     fun toWebPublisher(publisher: Publisher): WebPublisher
+    fun toWebBooks(books: List<Book>): List<WebBook>
 }

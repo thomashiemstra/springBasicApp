@@ -51,12 +51,6 @@ paths:
                 $ref: '#/components/schemas/Book'
         '405':
           description: Invalid input
-#  /addFavouriteBook/{bookId}:
-#    post:
-#      description: "add a favourite book for the logged in user"
-#      operationId: "add favourite book"
-#      parameters:
-#        -
   /saveBook:
     post:
       description: "save a new book"
@@ -76,6 +70,61 @@ paths:
           description: successful operation
         '405':
           description: Invalid input
+
+  /addFavouriteBook:
+    post:
+      description: "add a new book to the favourites of the logged in user"
+      operationId: "add favourite book"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FavouriteRequest'
+      tags:
+        - Users
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid input
+
+  /removeFavouriteBook:
+    post:
+      description: "remove an existing book in the favourites of the logged in user"
+      operationId: "remove favourite book"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FavouriteRequest'
+      tags:
+        - Users
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid input
+
+  /getFavouriteBooks:
+    get:
+      description: "get all favourite books for the logged in user"
+      operationId: "get favourites"
+      tags:
+        - Users
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        '405':
+          description: Invalid input
+
 
 components:
   parameters:
@@ -147,3 +196,9 @@ components:
           type: integer
         publisherName:
           type: string
+
+    FavouriteRequest:
+      type: object
+      properties:
+        id:
+          type: integer

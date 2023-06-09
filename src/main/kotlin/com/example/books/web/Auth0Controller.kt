@@ -1,6 +1,6 @@
 package com.example.books.web
 
-import com.example.books.persistence.service.Auth0Service
+import com.example.books.service.Auth0Service
 import org.generated.books.api.AuthenticationApi
 import org.generated.books.model.WebAuth0LoginRequest
 import org.generated.books.model.WebAuth0LoginResponse

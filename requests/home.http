@@ -113,3 +113,26 @@ Content-Type: application/json
     "publisherName": "Scholastic Inc."
   }
 }
+
+
+### add favourite book
+POST {{host}}/addFavouriteBook
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "id": 200
+}
+
+### remove favourite book
+POST {{host}}/removeFavouriteBook
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "id": 1
+}
+
+### get Favourite books
+GET {{host}}/getFavouriteBooks
+Authorization: Bearer {{accessToken}}

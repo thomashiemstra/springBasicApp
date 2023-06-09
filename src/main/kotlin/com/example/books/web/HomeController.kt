@@ -31,9 +31,4 @@ class HomeController(val bookRepository: BookRepository) {
     fun whatever(@AuthenticationPrincipal jwt: Jwt, input: WebAuth0LoginRequest): String {
         return "whoop"
     }
-
-    @Transactional
-    private fun getBookById(id: Long): Optional<Book> {
-        return bookRepository.findById(id)
-    }
 }

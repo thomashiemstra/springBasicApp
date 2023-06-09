@@ -1,4 +1,4 @@
-package com.example.books.persistence.service
+package com.example.books.service
 
 import com.example.books.persistence.UserRepository
 import com.example.books.security.Auth0Properties
@@ -47,7 +47,7 @@ class Auth0Service(val auth0RestTemplate: RestTemplate,
     @Transactional
     private fun saveUserIfNotExists(userName: String) {
         userRepository.findByUserName(userName) ?: let {
-            val newUser = User(null, userName)
+            val newUser = User(null, userName, mutableListOf())
             userRepository.save(newUser)
         }
     }

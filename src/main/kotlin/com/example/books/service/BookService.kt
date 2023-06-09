@@ -1,4 +1,4 @@
-package com.example.books.persistence.service
+package com.example.books.service
 
 import com.example.books.persistence.*
 import jakarta.transaction.Transactional
@@ -12,7 +12,7 @@ class BookService(private val bookRepository: BookRepository,
                   private val publisherRepository: PublisherRepository
 ) {
 
-    fun getBookById(id: Long): Book {
+    fun getBookById(id: Int): Book {
         return bookRepository.findById(id).getOrNull() ?: error("book not found")
     }
 

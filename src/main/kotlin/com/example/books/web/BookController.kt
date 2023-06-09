@@ -1,7 +1,7 @@
 package com.example.books.web
 
-import com.example.books.persistence.service.BookService
-import com.example.books.persistence.service.Mapper
+import com.example.books.service.BookService
+import com.example.books.service.Mapper
 import mu.KotlinLogging
 import org.generated.books.api.BooksApi
 import org.generated.books.model.WebBook
@@ -17,7 +17,7 @@ class BookController(
     private val logger = KotlinLogging.logger {}
 
     override fun getBook(bookId: Int): ResponseEntity<WebBook> {
-        val book = bookService.getBookById(bookId.toLong())
+        val book = bookService.getBookById(bookId)
         val response = mapper.toWebBook(book)
         return ResponseEntity.ok(response)
     }
