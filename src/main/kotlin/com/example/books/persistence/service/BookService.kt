@@ -9,8 +9,7 @@ import kotlin.jvm.optionals.getOrNull
 @Service
 class BookService(private val bookRepository: BookRepository,
                   private val authorRepository: AuthorRepository,
-                  private val publisherRepository: PublisherRepository,
-                  private val userRepository: UserRepository
+                  private val publisherRepository: PublisherRepository
 ) {
 
     fun getBookById(id: Long): Book {
@@ -22,9 +21,5 @@ class BookService(private val bookRepository: BookRepository,
         book.publisher = publisherRepository.findById(book.publisher.id!!).getOrNull() ?: error("invalid publisher id provided")
 
         bookRepository.save(book)
-    }
-
-    fun saveUser() {
-        userRepository.save( User(null, "whoop"))
     }
 }
