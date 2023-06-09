@@ -102,3 +102,13 @@ sourceSets {
         }
     }
 }
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    exclude("**/*IntegrationTest*") // this is it
+}
+
+val integrationTestTask = tasks.register<Test>("integrationTest") {
+    useJUnitPlatform()
+    include("*IntegrationTest")
+}
