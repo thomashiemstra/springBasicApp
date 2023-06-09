@@ -47,7 +47,7 @@ class Auth0Service(val auth0RestTemplate: RestTemplate,
     @Transactional
     private fun saveUserIfNotExists(userName: String) {
         userRepository.findByUserName(userName) ?: let {
-            val newUser = User(null, userName, mutableListOf())
+            val newUser = User(null, userName, mutableListOf(), mutableListOf())
             userRepository.save(newUser)
         }
     }

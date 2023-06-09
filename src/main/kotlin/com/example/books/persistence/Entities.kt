@@ -67,5 +67,20 @@ data class User(
     @JoinTable(name = "favourite_books_join_table",
         joinColumns = [JoinColumn(name = "user_id", referencedColumnName = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "book_id", referencedColumnName = "book_id")])
-    var favouriteBooks: MutableList<Book>
+    var favouriteBooks: MutableList<Book>,
+    @OneToMany(targetEntity = BookList::class, mappedBy = "user")
+    var bookLists: List<BookList>
+)
+
+@Entity(name = "bookList")
+@Table(name = "booklists")
+data class BookList(
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booklist_id")
+    var id: Int?,
+    var playlistName: String,
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    var user: User
 )
