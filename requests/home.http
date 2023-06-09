@@ -130,9 +130,51 @@ Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
-  "id": 1
+  "id": 200
 }
 
 ### get Favourite books
 GET {{host}}/getFavouriteBooks
 Authorization: Bearer {{accessToken}}
+
+### create book list
+POST {{host}}/createBookList
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "bookListName": "slechte boeken"
+}
+
+### delete book list
+DELETE {{host}}/removeBookList
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "bookListName": "slechte boeken"
+}
+
+### add book to book list
+POST {{host}}/addBookToBookList
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "bookListName": "slechte boeken",
+  "bookId": 2
+}
+
+### get all book lists
+POST {{host}}/getBookLists
+Authorization: Bearer {{accessToken}}
+
+### remove book from book list
+DELETE {{host}}/removeBookFromBookList
+Authorization: Bearer {{accessToken}}
+Content-Type: application/json
+
+{
+  "bookListName": "slechte boeken",
+  "bookId": 4356546353463546
+}

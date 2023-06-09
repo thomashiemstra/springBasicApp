@@ -31,6 +31,8 @@ paths:
                 $ref: '#/components/schemas/Auth0LoginResponse'
         '405':
           description: Invalid input
+        '400':
+          description: bad request
 
   /book/{bookId}:
     get:
@@ -51,6 +53,9 @@ paths:
                 $ref: '#/components/schemas/Book'
         '405':
           description: Invalid input
+        '400':
+          description: bad request
+
   /saveBook:
     post:
       description: "save a new book"
@@ -70,6 +75,8 @@ paths:
           description: successful operation
         '405':
           description: Invalid input
+        '400':
+          description: bad request
 
   /addFavouriteBook:
     post:
@@ -88,6 +95,8 @@ paths:
           description: successful operation
         '405':
           description: Invalid input
+        '400':
+          description: bad request
 
   /removeFavouriteBook:
     post:
@@ -106,6 +115,8 @@ paths:
           description: successful operation
         '405':
           description: Invalid input
+        '400':
+          description: bad request
 
   /getFavouriteBooks:
     get:
@@ -124,7 +135,108 @@ paths:
                   $ref: '#/components/schemas/Book'
         '405':
           description: Invalid input
+        '400':
+          description: bad request
 
+  /createBookList:
+    post:
+      description: "create a book list of the logged in user"
+      operationId: "create book list"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookListRequest'
+      tags:
+        - Users
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid input
+        '400':
+          description: bad request
+
+  /removeBookList:
+    delete:
+      description: "remove a book list of the logged in user"
+      operationId: "remove book list"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookListRequest'
+      tags:
+        - Users
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid input
+        '400':
+          description: bad request
+
+  /addBookToBookList:
+    post:
+      description: "add a book to a book list"
+      operationId: "add book to book list"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookToBookListRequest'
+      tags:
+        - Users
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid input
+        '400':
+          description: bad request
+
+  /getBookLists:
+    post:
+      description: "get all book lists for the logged in user"
+      operationId: "get book lists"
+      tags:
+        - Users
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookListResponse'
+        '405':
+          description: Invalid input
+        '400':
+          description: bad request
+
+  /removeBookFromBookList:
+    delete:
+      description: "remove a book from a book list"
+      operationId: "remove book from book list"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookToBookListRequest'
+      tags:
+        - Users
+      responses:
+        '200':
+          description: successful operation
+        '405':
+          description: Invalid input
+        '400':
+          description: bad request
 
 components:
   parameters:
@@ -202,3 +314,27 @@ components:
       properties:
         id:
           type: integer
+
+    BookListRequest:
+      type: object
+      properties:
+        bookListName:
+          type: string
+
+    BookToBookListRequest:
+      type: object
+      properties:
+        bookListName:
+          type: string
+        bookId:
+          type: integer
+
+    BookListResponse:
+      type: object
+      properties:
+        bookListName:
+          type: string
+        books:
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'

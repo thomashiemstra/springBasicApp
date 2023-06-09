@@ -2,9 +2,11 @@ package com.example.books.service
 
 import com.example.books.persistence.Author
 import com.example.books.persistence.Book
+import com.example.books.persistence.BookList
 import com.example.books.persistence.Publisher
 import org.generated.books.model.WebAuthor
 import org.generated.books.model.WebBook
+import org.generated.books.model.WebBookListResponse
 import org.generated.books.model.WebPublisher
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
@@ -21,4 +23,5 @@ interface Mapper  {
 
     fun toWebPublisher(publisher: Publisher): WebPublisher
     fun toWebBooks(books: List<Book>): List<WebBook>
+    fun toWebBookLists(bookLists: List<BookList>): List<WebBookListResponse>
 }
