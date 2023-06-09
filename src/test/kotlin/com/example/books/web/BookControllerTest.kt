@@ -8,7 +8,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.testcontainers.shaded.com.github.dockerjava.core.MediaType
 
 
-internal class BookControllerTest: IntegrationTests() {
+internal class BookControllerIntegrationTest: IntegrationTests() {
 
     @Test
     fun whatever() {
