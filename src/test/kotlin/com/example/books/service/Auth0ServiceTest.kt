@@ -6,10 +6,12 @@ import com.example.books.security.Auth0Properties
 import org.generated.books.model.WebAuth0LoginRequest
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 import org.springframework.web.client.RestTemplate
+
 
 internal class Auth0ServiceTest {
 
@@ -53,13 +55,13 @@ internal class Auth0ServiceTest {
 
         whenever(userRepository.findByUserName("auth0|642de1ff3595d0580ee31663")).thenReturn(null)
 
-        val expectedUser = User(null, "auth0|642de1ff3595d0580ee31663", mutableListOf(), mutableListOf())
-        whenever(userRepository.save(expectedUser)).thenReturn(expectedUser)
+        whenever(userRepository.save(Mockito.any(User::class.java))).thenAnswer { i -> i.arguments[0] }
 
         //when
         subject.login(request)
 
         //then
+        val expectedUser = User(null, "auth0|642de1ff3595d0580ee31663", mutableListOf(), mutableListOf())
         verify(userRepository).save(expectedUser)
     }
 
