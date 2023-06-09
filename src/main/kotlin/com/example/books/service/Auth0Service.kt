@@ -30,8 +30,7 @@ class Auth0Service(val auth0RestTemplate: RestTemplate,
                 password = request.password,
                 audience = auth0Properties.audience,
                 client_id = auth0Properties.clientId,
-                client_secret = auth0Properties.clientSecret,
-                scope = "read:sample"
+                client_secret = auth0Properties.clientSecret
         )
 
         val response = auth0RestTemplate.postForObject(url, loginRequest, LoginResponse::class.java) ?: error("got no response from auth0")
@@ -62,10 +61,6 @@ class Auth0Service(val auth0RestTemplate: RestTemplate,
     }
 }
 
-data class LoginRequest(val grant_type: String, val username: String, val password: String, val audience: String, val client_id: String, val client_secret: String, val scope: String)
+data class LoginRequest(val grant_type: String, val username: String, val password: String, val audience: String, val client_id: String, val client_secret: String)
 
 data class LoginResponse(val access_token: String)
-
-data class InfoRequest(val id_token: String)
-
-data class InfoResponse(val user_id: String)
